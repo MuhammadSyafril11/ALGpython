@@ -1,6 +1,6 @@
 """
-AYATULLOH AL KURSI/20083000116/2E
-19-06-2021
+Muhammad Syafril/20083000091/2E
+22-06-2021
 SOAL NO. 1 Quiz 2 Pembelian Oli
 """
 ulang = "y"
