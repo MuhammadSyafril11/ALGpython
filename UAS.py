@@ -1,41 +1,84 @@
-"""
+import datetime
+from time import process_time_ns
 
-MUHAMMAD SYAFRIL/20083000091/2E
-22-06-2021
-SOAL NO. 7 APLIKASI 5b
-PROGRAM CEK Tingkat Usia
+x = datetime.datetime.now()
 
-"""
-ulang="y"
-while ulang=="y" or ulang =="Y":
-#Siapkan variabel
-    print("===========================")
-    print(" APLIKASI 5b")
-    print(" CEK Tingkat Usia")
-    print("===========================")
-    n=1
+print("========================================================")
+print("                     input Slip Gaji                  ")
+print("             Tanggal : ",x.strftime("%x"))
+print("========================================================")
+
+
+golongan = ['1','2','3']
+gajipokok = ['2500000','4500000','6500000']
+
+nama = input("Nama                    =       ")
+g= input("Golongan                =       ")
+gol = int(g)
+if gol == 1 :
+    idx = 0
+    tunjangan = 0.01
+elif gol == 2:
+    idx = 1
+    tunjangan = 0.03
+elif gol == 3:
+    idx = 2
+    tunjangan = 0.05
+else :
+    print("Masukkan kembali golongan dengan benar")
+
+print("Laki - Laki atau Perempuan")
+jenis_kelamin = input("Jenis kelamin           =      ")
+print ("Kawin atau belum")
+status_kawin = input("status Kawin            =      ")
+status_anak = input("Apakah punya anak       =      ")
+
+#istri
+if jenis_kelamin == "Laki Laki" or "Laki laki" or "laki laki" and status_kawin == "Kawin" or "kawin":
+   tunjanganistri = int(gajipokok[idx]) * tunjangan
+else :
+    tunjanganistri = 0
+#Anak
+if status_kawin == "Kawin" or "kawin" and status_anak == "Iya" or "iya":
+    tunjangananak = int(gajipokok[idx]) * 0.02
+else :
+    tunjangananak = 0
+#Bruto
+gajibruto = int(gajipokok[idx]) + int(tunjanganistri) + int(tunjangananak)
+
+#Jabatan
+biayajabatan = int(gajibruto) * 0.05
+
+#Pensiun
+iuran_pensiun = 15500
+
+#Organsasi
+iuran_organisasi = 3500
+
+#Net
+GajiNetto = int(gajibruto) - int(iuran_organisasi) - int(iuran_pensiun)
+ 
+
+
     
-    #Cek batasan usia 0-100
-    while n>0 and n<=100:
-        u = input("Masukan Usia = ")
-        n = int(u)
-        if n>0 and n<=100:
-            if n>=60:
-                    sts= "Lansia"
-            elif n>=35:
-                    sts= "Dewasa"
-            elif n>=18:
-                    sts="Pemuda"
-            elif n>=15:
-                    sts="Remaja"
-            else: sts="Anak"
-            print(sts)
 
-            ulang=input("Ingin Mengecek Kembali? y/t = ")
-            if ulang=="t" or ulang =="T":
-                break
+    
 
-        else:
-            pesan="Masukan Kembali Angka Usia Antara 0-100"
-            print(pesan)
-            print()
+
+print("========================================================")
+print("                         Slip Gaji                  ")
+print("                 Tanggal : ",x.strftime("%x"))
+print("========================================================")
+print("Nama                     " + nama)
+print("Golongan                 " + str(gol))
+print("jenis kelamin            " + jenis_kelamin)
+print("Staus Kawin              " + status_kawin)
+print("Gaji Pokok               " + gajipokok[idx])
+print("Tunjangan istri          " + str(tunjanganistri))
+print("Tunjangan Anak           " + str(tunjangananak))
+print(">>Gaji bruto             " + str(gajibruto))
+print("========================================================")
+print("Biaya Jabatan            " + str(biayajabatan))
+print("Iuran Pensiun            " + str(iuran_pensiun))
+print("Iuran Organisasi         " + str(iuran_organisasi))
+print(">>Gaji Netto             " + str(GajiNetto))
